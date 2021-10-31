@@ -54,7 +54,10 @@ export default {
         if(!key){
             this.$router.push('./')
         }
-        this.$axios.get('http://localhost:5000/blogs',)
+        const headers ={
+            "Authorization":`Bearer ${localStorage.getItem('authToken')}`,
+        }
+        this.$axios.get('http://localhost:5000/blogs', {headers})
         .then(res =>{
             console.log(res.data)
             console.log(res.data[0])
@@ -85,12 +88,11 @@ export default {
             const headers = {
                  "Authorization":`Bearer ${localStorage.getItem('authToken')}`,
                 //"Authorization":`${localStorage.getItem('authToken')}`,
-                "id":id
                 }
             //this.$axios.delete(`http://localhost:1337/blogs/${id}`,{headers})
-             this.$axios.delete('http://localhost:5000/blogs',{headers})
+             this.$axios.delete(`http://localhost:5000/blogs/${id}`,{headers})
             .then(() =>{
-                this.$axios.get('http://localhost:5000/blogs',)
+                this.$axios.get('http://localhost:5000/blogs',{headers})
                 .then(res =>{
                     this.blogs = res.data
                 })
@@ -104,7 +106,10 @@ export default {
             //     description:ndescription
             // }
             //this.blogs = this.blogs.push({nid,ntitle,ndescription})
-            this.$axios.get('http://localhost:5000/blogs',)
+            const headers = {
+                "Authorization":`Bearer ${localStorage.getItem('authToken')}`
+            }
+            this.$axios.get('http://localhost:5000/blogs',{headers})
             .then(res =>{
                 this.blogs = res.data
             })
@@ -118,7 +123,10 @@ export default {
             //console.log(this.needEditTitle,this.needEditDescription,this.needEditID);
         },
         saveChangesMade(){
-            this.$axios.get('http://localhost:5000/blogs',)
+            const headers = {
+                "Authorization":`Bearer ${localStorage.getItem('authToken')}`
+            }
+            this.$axios.get('http://localhost:5000/blogs',{headers})
             .then(res =>{
                 this.blogs = res.data
             })

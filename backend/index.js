@@ -5,8 +5,7 @@ const app = express();
 const cors = require('cors');
 const port = 5000;
 const mongoose = require("mongoose");
-const router = require('./routes').router1;
-const bcrypt = require('bcrypt');
+const router = require('./routes/index').router1;
 
 
 // connecting to database
