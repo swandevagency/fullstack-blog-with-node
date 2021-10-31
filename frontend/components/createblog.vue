@@ -29,13 +29,17 @@ export default {
                 Description : this.userdescription
             }
             const headers = {
-                "Authorization": `Bearer ${localStorage.getItem('authToken')}`,
+                // "Authorization": `${localStorage.getItem('authToken')}`
+                "Authorization":`Bearer ${localStorage.getItem('authToken')}`,
             }
             //this.$emit('pushThis',this.usertitle ,this.userdescription);
             this.$axios.post('http://localhost:5000/blogs',bloginfo,{headers})
             .then(res =>{
                 console.log(res.data);
                 this.$emit('pushThis')
+            })
+            .catch(err =>{
+                console.log(err.response.data)
             })
         }
     }

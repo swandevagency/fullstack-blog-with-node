@@ -4,11 +4,10 @@ const express = require('express');
 const app = express();
 const cors = require('cors');
 const port = 5000;
-const jwt = require('jsonwebtoken')
-const dotenv = require('dotenv')
 const mongoose = require("mongoose");
-const router1 = require('./routes').router1
-// const router2 = require('./routes').router2
+const router = require('./routes').router1;
+const bcrypt = require('bcrypt');
+
 
 // connecting to database
 mongoose.connect("mongodb://localhost:27017/node-backend", { useNewUrlParser: true })
@@ -28,11 +27,13 @@ app.use(
 
 app.use(express.json());
 
-app.use('/',router1)
-// app.use('/blogs',router2)
+app.use('/',router)
 
 // running server
 
 app.listen(port, () =>{
   console.log("server is running")
 })
+
+
+// docs , middlewares in it require login middleware , names , blog methods funcs

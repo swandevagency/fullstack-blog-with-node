@@ -32,7 +32,8 @@ export default {
                 id : this.editedID
             }
             const headers = {
-                "Authorization": `Bearer ${localStorage.getItem('authToken')}`,
+                // "Authorization": `Bearer ${localStorage.getItem('authToken')}`
+                "Authorization":`Bearer ${localStorage.getItem('authToken')}`,
             }
             //this.$axios.put(`http://localhost:1337/blogs/${this.editedID}`,bloginfo,{headers})
             this.$axios.put('http://localhost:5000/blogs',bloginfo,{headers})

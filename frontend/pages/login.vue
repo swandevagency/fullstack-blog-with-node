@@ -1,7 +1,7 @@
 <template>
     <div  class="wrapper">
         <div class="login-form">
-            <input type="text" v-model="username" placeholder="Username Or Email" class="login-fields">
+            <input type="text" v-model="username" placeholder="Username" class="login-fields">
             <input type="password" placeholder="password" v-model="password" class="login-fields">
             <button @click="logIn()" class="loginbtn">Log In</button>
             <h3 class="errmsg" v-if="error">{{errmsg}}</h3>
@@ -26,7 +26,7 @@ export default {
                 password: this.password
             })
             .then(res =>{
-                    localStorage.setItem('authToken', res.data.jwt)
+                    localStorage.setItem('authToken', res.data.token)
                     localStorage.setItem('username',this.username)
                     this.$router.push('/blogs')
                     console.log(res);

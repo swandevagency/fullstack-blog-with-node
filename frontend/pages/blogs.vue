@@ -83,7 +83,8 @@ export default {
          deleteChosenBlog(id){
             console.log(id)
             const headers = {
-                "Authorization":`Bearer ${localStorage.getItem('authToken')}`,
+                 "Authorization":`Bearer ${localStorage.getItem('authToken')}`,
+                //"Authorization":`${localStorage.getItem('authToken')}`,
                 "id":id
                 }
             //this.$axios.delete(`http://localhost:1337/blogs/${id}`,{headers})

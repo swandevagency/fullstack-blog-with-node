@@ -1,8 +1,12 @@
 const mongoose = require('mongoose')
 
 let blogSchema = new mongoose.Schema({
-    Title:String,
-    Description:String
-  })
+  Title: {
+    type: 'string'
+  },
+  Description: {
+    type: 'string'
+  }
+})
 
-  module.exports = blogSchema
+module.exports = blogSchema
